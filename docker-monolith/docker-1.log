@@ -1,0 +1,5 @@
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tmp/ubnt            latest              7e7fe9c0c9c8        2 minutes ago       126MB
+nginx               latest              4733136e5c3c        7 hours ago         126MB
+ubuntu              16.04               5e13f8dd4c1a        3 weeks ago         120MB
+hello-world         latest              fce289e99eb9        7 months ago        1.84kB
