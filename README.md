@@ -1,6 +1,25 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+## HW # 14 Docker network, docker-compose
+
+- Запущен контейнер с использованием none и host драйвера
+- Настроены 2 сети в соответствии со схемой
+`docker network create front_net back_net`
+- Запущены контейнеры с подключенными bridge сетями front_net и back_net
+- Подключены недостающие сети к контейнерам 
+```
+docker nework connect front_net post
+docker nework connect front_net comment
+```
+- Установлен docker-compose
+`pip3 install docker-compose`
+- Создан docker-compose.yml файл, параметризированы значения 
+- Заданы переменные в .env файле
+- Базовое имя проекта можно установить при запуске docker-compose с помощью параметра -p
+`docker-compose -p dockermicroservices up -d`
+
+
 ## HW # 13
 
 - Собраны образы для каждого из контейнеров приложения
