@@ -1,6 +1,16 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+
+## HW # 15 Gitlab-ci
+
+- Создан docker-host при помощи docker-machine 
+- Установлен Gitlab через docker-compose файл 
+`docker-compose up -d`
+- Настроен runner для работы с gitlab ci 
+- Настроен проект в gitlab и настроен ci
+- Настроены среды, динамические окружения, условия запуска тестов в пайплайне
+
 ## HW # 14 Docker network, docker-compose
 
 - Запущен контейнер с использованием none и host драйвера
