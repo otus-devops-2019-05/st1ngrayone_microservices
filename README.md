@@ -1,6 +1,22 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+## HW # 16 Monitoring-1
+
+- Создан докер-хост в GCP 
+- Запущен и протестирован образ прометея. 
+- Добавлена сборка образов скриптом в docker-build.sh
+- Создан docker-compose файл с учетом prometeus и reddit сервисов протестирована отдача метрик
+- Образы загружены на docker-hub https://cloud.docker.com/u/st1ngrayone/repository/list
+```
+$ docker login
+Login Succeeded
+$ docker push $USER_NAME/ui
+$ docker push $USER_NAME/comment
+$ docker push $USER_NAME/post
+$ docker push $USER_NAME/prometheus 
+```
+- Добавлен job node_exporter в прометей
 
 ## HW # 15 Gitlab-ci
 
