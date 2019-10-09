@@ -11,20 +11,20 @@ services:
           - comment_db
  
   ui:
-    image: ${USERNAME}/ui
+    image: ${USER_NAME}/ui
     ports:
       - 9292:9292/tcp
     networks:
       - front_net
  
   post:
-    image: ${USERNAME}/post
+    image: ${USER_NAME}/post
     networks:
       - front_net
       - back_net
  
   comment:
-    image: ${USERNAME}/comment
+    image: ${USER_NAME}/comment
     networks:
       - front_net
       - back_net
