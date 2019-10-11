@@ -1,6 +1,19 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+## HW # 17 Monitoring-2
+
+- Создан отдельный compose файл с инфраструктурой для мониторинга контейнеров
+- Добавлен контейнер grafana настроен сбор метрик через cadvisor
+- Подключены grafana дашборды "Docker and system monitoring"
+- Настроен дашборд с функцией rate для визуализации запросов с кодами ошибки 4хх или 5хх
+- Настроен дашборд с функцией rate для визуализации успешных http запросов
+`rate(ui_request_count{http_status=~"^[23].*"}[1m])`
+- Добавлены дашборды для мониторинга бизнес логики grafana/dashboards
+- Добавлен alertmanager в compose файл, пересобраны образы
+- Настроены алертинг в слак канал #anton_cherenkov
+- Запушены созданные образы на dockerhub https://cloud.docker.com/u/st1ngrayone/repository/list 
+ 
 ## HW # 16 Monitoring-1
 
 - Создан докер-хост в GCP 
