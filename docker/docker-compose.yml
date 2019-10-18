@@ -48,6 +48,8 @@ services:
   comment:
     environment:
       - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+      - COMMENT_DATABASE_HOST=comment_db
+      - COMMENT_DATABASE=comment
     image: ${USER_NAME}/comment:${COMMVER}
     networks:
       - front_net
