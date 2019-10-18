@@ -1,6 +1,48 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+## HW # 18 Logging-1 
+
+- Создан отдельный compose файл для логирования `docker-compose-logging.yml`
+```
+version: '3'
+services:
+fluentd:
+build: ./fluentd
+ports:
+- "24224:24224"
+- "24224:24224/udp"
+elasticsearch:
+image: elasticsearch
+expose:
+- 9200
+ports:
+- "9200:9200"
+kibana:
+image: kibana
+ports:
+- "5601:5601"
+```
+- Собран контейнер fluentd с конфигурацией для нашей системы
+`cd logging/fluentd/ && docker build -t $USERNAME/fluentd .`
+- В docker-compose.yml сервиса post добавлена конфигурация для сбора логов при помощи fluentd
+```
+logging:
+driver: "fluentd"
+options:
+fluentd-address: localhost:24224
+tag: service.post
+```
+- Протестировали визуализацию при помощи kibana
+- Добавлены регулярные выражения для сбора неструктурированных логов в docker/fluent/fluentd.conf
+- Настроены grok шаблоны
+- Добавлен zipkin в файл docker-compose-logging.yml
+
+### Задание со * zipkin
+- Развернут код из bugged репозитория. 
+- При помощи zipkin трейса удалось выяснить, что сервис comment отдает ошибку 500 при запросе /5da85228270cf6000b0c12be/comments
+- Как исправить, к сожалению не догадался:( 
+
 ## HW # 17 Monitoring-2
 
 - Создан отдельный compose файл с инфраструктурой для мониторинга контейнеров
