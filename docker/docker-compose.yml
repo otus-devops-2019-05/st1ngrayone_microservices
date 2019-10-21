@@ -1,6 +1,8 @@
 version: '3.3'
 services:
   post_db:
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     image: mongo:3.2
     volumes:
       - post_db:/data/db
@@ -11,20 +13,44 @@ services:
           - comment_db
  
   ui:
-    image: ${USER_NAME}/ui
+    image: ${USER_NAME}/ui:${UIVER}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     ports:
       - 9292:9292/tcp
     networks:
       - front_net
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.ui
  
   post:
-    image: ${USER_NAME}/post
+    image: ${USER_NAME}/post:${POSTVER}
+    environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE=posts
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+    depends_on:
+      - post_db
+    ports:
+      - "5000:5000"
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.post
     networks:
       - front_net
       - back_net
  
   comment:
-    image: ${USER_NAME}/comment
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+      - COMMENT_DATABASE_HOST=comment_db
+      - COMMENT_DATABASE=comment
+    image: ${USER_NAME}/comment:${COMMVER}
     networks:
       - front_net
       - back_net
