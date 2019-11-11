@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postdb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postdb
+  template:
+    metadata:
+      name: mongod
+      labels:
+        app: postdb
+    spec:
+      containers:
+      - image: st1ngrayone/postdb
+        name: postdb
+ 
