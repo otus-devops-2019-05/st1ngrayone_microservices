@@ -1,6 +1,13 @@
 # st1ngrayone_microservices
 st1ngrayone microservices repository
 
+## HW # 20 Kubernetes-2
+
+- Устрановлен minikube на hyper-v
+- Отредактированы manifest файлы
+- Запущен локальный кластер на minikube
+- Развернут кластер в gke
+
 ## HW # 19 Kubernetes-1
 
 - Созданы manifest файлы в директории kubernetes/reddit
